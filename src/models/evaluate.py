@@ -35,6 +35,7 @@ def main() -> None:
     y_true = pd.read_csv(args.y_test).squeeze()
     model = joblib.load(args.model)
 
+
     y_pred = model.predict(X)
 
     # -- Sauvegarde prédictions

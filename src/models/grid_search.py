@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-Hyper-param tuning avec GridSearchCV sur GradientBoostingRegressor
-→ best_params.pkl + trace du meilleur score R².
+Hyper-param tuning avec GridSearchCV sur XGBRegressor.
+Sortie : models/artefacts/best_params.pkl
 """
 from __future__ import annotations
 
@@ -11,9 +11,9 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import make_scorer, r2_score
 from sklearn.model_selection import GridSearchCV
+from xgboost import XGBRegressor
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
 
@@ -28,19 +28,31 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-
     X = pd.read_csv(args.X_train)
-    y = pd.read_csv(args.y_train).squeeze()  # Series
+    y = pd.read_csv(args.y_train).squeeze()
 
-    model = GradientBoostingRegressor(random_state=42)
+    model = XGBRegressor(
+        objective="reg:squarederror",
+        random_state=42,
+        tree_method="hist",  # rapide sur CPU
+    )
+
     param_grid = {
-        "n_estimators": [100, 300, 500],
-        "learning_rate": [0.05, 0.1],
-        "max_depth": [2, 3, 4],
+        "n_estimators": [300, 500, 800],
+        "max_depth": [3, 5, 7],
+        "learning_rate": [0.03, 0.1],
+        "subsample": [0.7, 0.9, 1.0],
+        "colsample_bytree": [0.7, 1.0],
+        "gamma": [0, 1],
     }
 
     gs = GridSearchCV(
-        model, param_grid, scoring=make_scorer(r2_score), cv=5, n_jobs=-1, verbose=1
+        estimator=model,
+        param_grid=param_grid,
+        scoring=make_scorer(r2_score),
+        cv=5,
+        n_jobs=-1,
+        verbose=1,
     )
     gs.fit(X, y)
 
@@ -48,7 +60,7 @@ def main() -> None:
     joblib.dump(gs.best_params_, args.out)
 
     logging.info(
-        "✔️  GridSearch terminé : meilleur R² = %.4f | params : %s",
+        "✔️  GridSearch XGB terminé : meilleur R²=%.4f | params=%s",
         gs.best_score_,
         gs.best_params_,
     )
