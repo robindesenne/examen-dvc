@@ -1,3 +1,10 @@
-/venv
-/clean_data.csv
-/data-file.bin
+# == Python / venv ==
+.venv/
+__pycache__/
+
+# == Artefacts suivis par DVC ==
+data/
+models/
+metrics/
+*.pkl
+*.csv
