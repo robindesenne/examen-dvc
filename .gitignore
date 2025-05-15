@@ -3,7 +3,10 @@
 __pycache__/
 
 # == Artefacts suivis par DVC ==
-data/
+/data/raw/raw.csv
+!/data/raw/raw.csv.dvc
+!/data/processed/
+!/data/prediction.csv
 models/
 metrics/
 *.pkl
