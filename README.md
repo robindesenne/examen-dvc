@@ -1,20 +1,29 @@
-# Examen DVC et Dagshub
-Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la solution de l'examen. 
+# Examen DVC / Dagshub – Robin DESENNE
 
-```bash       
-├── examen_dvc          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw       
-│   ├── metrics       
-│   ├── models      
-│   │   ├── data      
-│   │   └── models        
-│   ├── src       
-│   └── README.md.py       
-```
-N'hésitez pas à rajouter les dossiers ou les fichiers qui vous semblent pertinents.
+Ce dépôt contient la solution complète à l’examen :
 
-Vous devez dans un premier temps *Fork* le repo et puis le cloner pour travailler dessus. Le rendu de cet examen sera le lien vers votre dépôt sur DagsHub. Faites attention à bien mettre https://dagshub.com/licence.pedago en tant que colaborateur avec des droits de lecture seulement pour que ce soit corrigé.
+| Élément | Chemin |
+|---------|--------|
+| Données brutes | `data/raw/raw.csv` |
+| Données traitées | `data/processed/…` |
+| Modèle entraîné | `models/models/gbr_model.pkl` |
+| Métriques | `metrics/scores.json` |
+| Pipeline DVC | `dvc.yaml` + `dvc.lock` |
 
-Vous pouvez télécharger les données à travers le lien suivant : https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv.
+Le graphe de pipeline, les datasets et le modèle sont visibles directement sur Dagshub.
+
+## Lien Dagshub
+
+🔗 <https://dagshub.com/desenne.robin/examen-dvc>
+
+*(Lecteur « Licence Pédagogique » ajouté – read-only)*
+
+## Lancer la pipeline en local
+
+```bash
+git clone https://github.com/robindesenne/examen-dvc.git
+cd examen-dvc
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+dvc pull        # récupère données + modèle
+dvc repro       # rejoue la pipeline
