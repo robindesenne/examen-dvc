@@ -38,7 +38,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--in_dir", type=Path, default=Path("data/processed"))
     p.add_argument("--out_dir", type=Path, default=Path("data/processed"))
-    p.add_argument("--scaler_out", type=Path, default=Path("models/artefacts/pipe_scaler.pkl"))
+    p.add_argument("--scaler_out", type=Path, default=Path("models/data/pipe_scaler.pkl"))
     return p.parse_args()
 
 

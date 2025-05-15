@@ -22,7 +22,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--X_test", type=Path, default="data/processed/X_test_scaled.csv")
     p.add_argument("--y_test", type=Path, default="data/processed/y_test.csv")
-    p.add_argument("--model", type=Path, default="models/gbr_model.pkl")
+    p.add_argument("--model", type=Path, default="models/models/gbr_model.pkl")
     p.add_argument("--pred_out", type=Path, default="data/prediction.csv")
     p.add_argument("--metrics_out", type=Path, default="metrics/scores.json")
     return p.parse_args()

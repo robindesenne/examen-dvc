@@ -22,7 +22,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--X_train", type=Path, default="data/processed/X_train_scaled.csv")
     p.add_argument("--y_train", type=Path, default="data/processed/y_train.csv")
-    p.add_argument("--out", type=Path, default="models/artefacts/best_params.pkl")
+    p.add_argument("--out", type=Path, default="models/data/best_params.pkl")
     return p.parse_args()
 
 
