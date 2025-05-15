@@ -41,8 +41,8 @@ stages:
       size: 238533
     - path: src/data/normalize.py
       hash: md5
-      md5: 9081b078e30034a285a2ce30d3e5cb8a
-      size: 2816
+      md5: eeabd575e484badd9cc94e820cc5efa8
+      size: 2811
     outs:
     - path: data/processed/X_test_scaled.csv
       hash: md5
@@ -52,7 +52,7 @@ stages:
       hash: md5
       md5: 19db7d4b6e04075896d0517d53f4ed19
       size: 287263
-    - path: models/artefacts/pipe_scaler.pkl
+    - path: models/data/pipe_scaler.pkl
       hash: md5
       md5: c316d70f8d18234f3f6243cdc01543a2
       size: 2793
@@ -69,10 +69,10 @@ stages:
       size: 25951
     - path: src/models/grid_search.py
       hash: md5
-      md5: 332da1ecf11a90cddfc9be673bf986fe
-      size: 1807
+      md5: 212141f40d9a1715d903ad4e9dd576cb
+      size: 1802
     outs:
-    - path: models/artefacts/best_params.pkl
+    - path: models/data/best_params.pkl
       hash: md5
       md5: b0010afa5c45873daa9c1c4cad65b1e9
       size: 132
@@ -87,16 +87,16 @@ stages:
       hash: md5
       md5: a9cd9d91da89f732843d72548f64ded3
       size: 25951
-    - path: models/artefacts/best_params.pkl
+    - path: models/data/best_params.pkl
       hash: md5
       md5: b0010afa5c45873daa9c1c4cad65b1e9
       size: 132
     - path: src/models/train.py
       hash: md5
-      md5: 3cda534a57804c8293d57ced41f7cf94
-      size: 1394
+      md5: 1f231a6ffde991ae8e36267a220b6c72
+      size: 1396
     outs:
-    - path: models/gbr_model.pkl
+    - path: models/models/gbr_model.pkl
       hash: md5
       md5: 7579c7b86cc455c8a5f90a6ad7dbcb93
       size: 1618375
@@ -111,14 +111,14 @@ stages:
       hash: md5
       md5: a051d29629c8bbb4cfb7e85c7f0315da
       size: 6456
-    - path: models/gbr_model.pkl
+    - path: models/models/gbr_model.pkl
       hash: md5
       md5: 7579c7b86cc455c8a5f90a6ad7dbcb93
       size: 1618375
     - path: src/models/evaluate.py
       hash: md5
-      md5: da6c6f479f0a40a522482d9f18c1e600
-      size: 1668
+      md5: e6aac9be9cba97a98c08f85d2296b153
+      size: 1675
     outs:
     - path: data/prediction.csv
       hash: md5
