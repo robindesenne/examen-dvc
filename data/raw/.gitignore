@@ -1,6 +1,8 @@
 .venv/
+data/*
 __pycache__/
 *.pyc
 data/processed/
-models/
-metrics/
+models/*
+metrics/*
+*.pkl
