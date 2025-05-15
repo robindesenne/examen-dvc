@@ -11,3 +11,4 @@ models/
 metrics/
 *.pkl
 *.csv
+.dvc/config.local
